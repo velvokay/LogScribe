@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LogScribe</title>
+    <style>
+        body {
+            margin:0;
+            background-color: white;
+            font-family: sans-serif;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #0678be;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+    </style>
+
+    <link href="static/sticky-footer-navbar.css" rel="stylesheet">
+</head>
+<body>
+    <ul>
+        <li><a class="active" href="#home" style="margin-left: 476px">Home</a></li>
+        <li><a href="#news">Login</a></li>
+        <li><a href="#contact">Register</a></li>
+        <li><a href="#about">Source</a></li>
+    </ul>
+    <div style="padding: 20px; margin-top: 30px; margin-left: 476px; margin-right: 476px; height: 1500px">
+        {% block content %}{% endblock %}
+    </div>
+<footer class="footer">
+    <div class="container" style="text-align: center">
+        <p class="text-muted">alexakovlev@gmail.com | 2015</p>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,9 @@
+
+# Project Files
+
+/flask
+/wheelhouse
+
+# Python
+/__pycache__
+*.pyc
