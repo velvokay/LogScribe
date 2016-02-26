@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, url_for, json, request, sess
 from flask.ext.mysqldb import MySQL
 from app import app
 
-from app.models import db
+from app.models import db, User
 from app.forms import SignupForm
 
 @app.route('/')
@@ -33,6 +33,18 @@ def signup():
 	elif request.method == 'GET':
 		return render_template('register.html', form=form)
 
+@app.route('/profile')
+def profile():
+	if 'email' not in session:
+		return redirect(url_for('signin'))
+	
+	user = User.query.filter_by(email = session['email']).first()
+	
+	if user is None:
+		return redirect(url_for('signin'))
+	else:
+		return render_template('profile.html')
+		
 # @app.route('/register')
 # def register():
 	# return render_template('register.html')
