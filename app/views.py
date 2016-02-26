@@ -3,7 +3,7 @@ from flask.ext.mysqldb import MySQL
 from app import app
 
 from app.models import db
-from app.forms import ContactForm, SignupForm
+from app.forms import SignupForm
 
 @app.route('/')
 @app.route('/index')
