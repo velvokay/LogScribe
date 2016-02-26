@@ -21,7 +21,13 @@ def signup():
 	if request.method == 'POST':
 		if form.validate() == False:
 			return render_template('register.html', form=form)
-		else:   
+		else:
+			newuser = User(form.firstname.data, form.lastname.data, form.email.data, form.password.data)
+			db.session.add(newuser)
+			db.session.commit()
+			
+			session['email'] = newuser.email
+			return redirect(url_for('profile'))
 			return "[1] Create a new user [2] sign in the user [3] redirect to the user's profile"
 		
 	elif request.method == 'GET':
