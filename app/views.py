@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, json, request, session, flash, send_file
 from flask.ext.mysqldb import MySQL
 from app import app
+from app import models
 from models import db
 
 @app.route('/')
