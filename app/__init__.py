@@ -5,5 +5,5 @@ from app import views
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://velvokay:alpine64@mysql.server/velvokay$default'
  
-from models import db
+from app.models import db
 db.init_app(app)

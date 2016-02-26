@@ -1,8 +1,8 @@
 from flask import Flask, render_template, redirect, url_for, json, request, session, flash, send_file
 from flask.ext.mysqldb import MySQL
 from app import app
-from app import models
-from models import db
+
+from app.models import db
 
 @app.route('/')
 @app.route('/index')
@@ -29,7 +29,7 @@ def signUp():
 		
 @app.route('/testdb')
 def testdb():
-  if db.session.query("1").from_statement("SELECT 1").all():
-    return 'It works.'
-  else:
-    return 'Something is broken.'
+	if db.session.query("1").from_statement("select 1").all():
+		return 'it works.'
+	else:
+		return 'something is broken.'
