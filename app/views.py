@@ -1,13 +1,14 @@
 from flask import Flask, render_template, redirect, url_for, json, request, session, flash, send_file
 from flask.ext.mysqldb import MySQL
 from app import app
+from models import db
 
 @app.route('/')
 @app.route('/index')
 def index():
     return render_template('index.html')
 	
-@app.route('/login')
+@app.route('/login', methods=['POST'])
 def login():
 	return render_template('login.html')
 	
@@ -24,3 +25,10 @@ def signUp():
 		return json.dumps({'html':'<span>All fields good !!</span>'})
 	else:
 		return json.dumps({'html':'<span>Enter the required fields</span>'})
+		
+@app.route('/testdb')
+def testdb():
+  if db.session.query("1").from_statement("SELECT 1").all():
+    return 'It works.'
+  else:
+    return 'Something is broken.'
