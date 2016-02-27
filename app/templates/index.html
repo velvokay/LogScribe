@@ -8,30 +8,19 @@
 <body>
     <H1>LogScr V1.1.1</H1>
     <div>
-        <form class="form-horizontal" method="post" action="/addTask">
+        <form class="form-horizontal" method="post" action="{{ url_for('addTask') }}">
             <fieldset>
                 <legend>Create Your Task</legend>
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="txtTitle">Title</label>
-                    <div class="col-md-4">
-                        <input id="txtTitle" name="inputTitle" type="text" placeholder="placeholder" class="form-control input-md">
-                    </div>
-                </div>
+                {{ form.hidden_tag() }}
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="txtPost">Description</label>
-                    <div class="col-md-4">
-                        <textarea class="form-control" id="txtPost" name="inputDescription"></textarea>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="singlebutton"></label>
-                    <div class="col-md-4">
-                        <input id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit" value="Publish" />
-                    </div>
-                </div>
+                {{ form.task_title.label }}
+                {{ form.task_title }}
+                <br>
+                {{ form.task_description.label }}
+                {{ form.task_description }}
+                <br>
+                {{ form.submit }}
 
             </fieldset>
         </form>
