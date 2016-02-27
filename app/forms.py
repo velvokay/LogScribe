@@ -46,6 +46,7 @@ class SigninForm(Form):
 class AddTaskForm(Form):
 	task_title = TextField("Title",  [validators.Required("Please enter the title.")])
 	task_description = TextField("Description",  [validators.Required("Please enter a description.")])
+	submit = SubmitField("Create Task")
 	
 	def __init__(self, *args, **kwargs):
 		Form.__init__(self, *args, **kwargs)
