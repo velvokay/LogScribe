@@ -14,6 +14,9 @@ def index():
 def signup():
 	form = SignupForm()
 	
+	if 'email' in session:
+		return redirect(url_for('profile'))
+	
 	if request.method == 'POST':
 		if form.validate() == False:
 			return render_template('register.html', form=form)
@@ -45,6 +48,9 @@ def profile():
 def signin():
 	form = SigninForm()
 	
+	if 'email' in session:
+		return redirect(url_for('profile'))
+	
 	if request.method == 'POST':
 		if form.validate() == False:
 			return render_template('login.html', form=form)
@@ -54,7 +60,16 @@ def signin():
 			
 	elif request.method == 'GET':
 		return render_template('login.html', form=form)
-	
+
+@app.route('/signout')
+def signout():
+
+	if 'email' not in session:
+		return redirect(url_for('signin'))
+		
+	session.pop('email', None)
+	return redirect(url_for('index'))
+
 # @app.route('/register')
 # def register():
 	# return render_template('register.html')
