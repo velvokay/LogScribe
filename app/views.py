@@ -18,10 +18,11 @@ def index():
 			db.session.add(newtask)
 			db.session.commit()
 			
+			return redirect(url_for('index'))
+			
 	elif request.method == 'GET':
 		return render_template('index.html', form=form)
 	
-	return render_template('index.html', form=form)
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
 	form = SignupForm()
