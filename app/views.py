@@ -47,12 +47,12 @@ def signin():
 	
 	if request.method == 'POST':
 		if form.validate() == False:
-			return render_template('login.html', form = form)
+			return render_template('login.html', form=form)
 		else:
 			session['email'] = form.email.data
 			return redirect(url_for('profile'))
 	elif request.method == ['GET']:
-		return render_template('login.html', form = form)
+		return render_template('login.html', form=form)
 	
 # @app.route('/register')
 # def register():
