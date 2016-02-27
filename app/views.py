@@ -72,31 +72,20 @@ def signout():
 
 @app.route('/addTask',methods=['POST'])
 def addTask():
-	try:
-		if session.get('email'):
-			_title = request.form['inputTitle']
-			_description = request.form['inputDescription']
-			_user = session.get('email')
-			
-			conn = mysql.connect()
-			cursor = conn.cursor()
-			cursor.callproc('sp_addTask',(_title,_description,_user))
-			data = cursor.fetchall()
-			
-			if len(data) is 0:
-				conn.commit()
-				return redirect('/index')
-			else:
-				return render_template('error.html',error = 'An error occurred!')
-				
-		else:
-			return render_template('error.html',error = 'Unauthorized Access')
-	except Exception as e:
-		return render_template('error.html',error = str(e))
-	finally:
-		cursor.close()
-		conn.close()
+	if session.get('email'):
+		_title = request.form['inputTitle']
+		_description = request.form['inputDescription']
+		_user = session.get('email')
 		
+		conn = mysql.connect()
+		cursor = conn.cursor()
+		cursor.callproc('sp_addTask',(_title,_description,_user))
+		data = cursor.fetchall()
+		
+		if len(data) is 0:
+			conn.commit()
+			return redirect('/index')
+			
 # @app.route('/register')
 # def register():
 	# return render_template('register.html')
