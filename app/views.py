@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, url_for, json, request, sess
 from flask.ext.mysqldb import MySQL
 from app import app
 
-from app.models import db, User
+from app.models import db, User, Task
 from app.forms import SignupForm, SigninForm, AddTaskForm
 
 @app.route('/')
