@@ -11,14 +11,16 @@
         }
 
         ul {
+            width: 982px;
             list-style-type: none;
-            margin: 0;
-            padding: 0;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 0;
             overflow: hidden;
             background-color: #0678be;
-            position: fixed;
             top: 0;
-            width: 100%;
+            padding: 0;
+            height: 46px;
         }
 
         li {
@@ -37,18 +39,20 @@
     <link href="static/sticky-footer-navbar.css" rel="stylesheet">
 </head>
 <body>
-    <ul>
-        <li><a class="active" href="/" style="margin-left: 476px">Home</a></li>
-        <li><a href="http://github.com/velvokay/LogScribe">Source</a></li>
-        {% if 'email' in session %}
-        <li><a href="/profile">Profile</a></li>
-        <li><a href="/signout">Signout</a></li>
-        {% else %}
-        <li><a href="/signin">Login</a></li>
-        <li><a href="/signup">Register</a></li>
+    <div style="width:100%; margin-left: auto; margin-right: auto; background-color: #0678be; position: fixed; top: 0; height: 46px">
+        <ul>
+            <li><a class="active" href="/">Home</a></li>
+            <li><a href="http://github.com/velvokay/LogScribe">Source</a></li>
+            {% if 'email' in session %}
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/signout">Signout</a></li>
+            {% else %}
+            <li><a href="/signin">Login</a></li>
+            <li><a href="/signup">Register</a></li>
+        </ul>
         {% endif %}
-    </ul>
-    <div style="padding: 20px; margin-top: 30px; margin-left: 476px; margin-right: 476px; height: 1500px">
+    </div>
+    <div style="padding-top: 20px; margin-top: 30px; width:952px; margin-left: auto; margin-right:auto; height: 1500px; background-image: url("static/shl.png")">
         {% block content %}{% endblock %}
     </div>
 <footer class="footer">
