@@ -7,21 +7,24 @@
 {% block content %}
 <body>
     <H1>LogScr V1.1.1</H1>
-    <div>
-        <form class="form-horizontal" method="post" action="{{ url_for('index') }}">
-
-                {{ form.hidden_tag() }}
-
-                {{ form.task_title.label }}
-                {{ form.task_title }}
-                <br>
-                {{ form.task_description.label }}
-                {{ form.task_description }}
-                <br>
-                {{ form.submit }}
-
-
-        </form>
+    <div class="container-fluid">
+        <section>
+            <form class="form-horizontal" method="post" action="{{ url_for('index') }}">
+                    <legend>Create Your Task</legend>
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        {{ form.task_title.label }}
+                        {{ form.task_title }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.task_description.label }}
+                        {{ form.task_description }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.submit }}
+                    </div>
+            </form>
+        </section>
     </div>
 </body>
 {% endblock %}
