@@ -32,7 +32,7 @@ class Task(db.Model):
 	task_date = db.Column(db.DateTime)
 	task_address = db.Column(db.String(80))
 	
-	def __init__(self, task_title, task_description, task_user_id, task_date, task_address):
+	def __init__(self, task_title, task_description):
 		self.task_title = task_title.title()
 		self.task_description = task_description.title()
 		# self.task_id = task_id.title()
