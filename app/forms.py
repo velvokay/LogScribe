@@ -54,7 +54,7 @@ class AddTaskForm(Form):
 	def validate(self):
 		if not Form.validate(self):
 			return False
-		task = Task.query.filter_by(task_title).first()
+		task = Task.query.filter_by(task_title = self.task_title.data).first()
 		if task:
 			self.task.errors.append("That title is already taken")
 			return False
