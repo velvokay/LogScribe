@@ -6,9 +6,20 @@ from app.models import db, User
 from app.forms import SignupForm, SigninForm, AddTaskForm
 
 @app.route('/')
-@app.route('/index')
+@app.route('/index', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    form = AddTaskForm()
+	
+	if request.method == 'POST':
+		if form.validate() == False:
+			return render_template('index.html', form=form)
+		else:
+			newtask = Task(form.task_title.data, form.task_description.data)
+			db.session.add(newtask)
+			db.session.commit()
+			
+	elif request.method == 'GET':
+		return render_template('index.html', form=form)
 	
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -69,21 +80,6 @@ def signout():
 		
 	session.pop('email', None)
 	return redirect(url_for('index'))
-
-@app.route('/addTask',methods=['GET', 'POST'])
-def addTask():
-	form = AddTaskForm()
-	
-	if request.method == 'POST':
-		if form.validate() == False:
-			return render_template('index.html', form=form)
-		else:
-			newtask = Task(form.task_title.data, form.task_description.data)
-			db.session.add(newtask)
-			db.session.commit()
-			
-	elif request.method == 'GET':
-		return render_template('index.html', form=form)
 	
 # @app.route('/register')
 # def register():
