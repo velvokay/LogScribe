@@ -8,7 +8,7 @@ from app.forms import SignupForm, SigninForm, AddTaskForm
 @app.route('/')
 @app.route('/index', methods=['GET', 'POST'])
 def index():
-    form = AddTaskForm()
+	form = AddTaskForm()
 	
 	if request.method == 'POST':
 		if form.validate() == False:
