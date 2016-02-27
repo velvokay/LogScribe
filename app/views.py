@@ -51,7 +51,8 @@ def signin():
 		else:
 			session['email'] = form.email.data
 			return redirect(url_for('profile'))
-	elif request.method == ['GET']:
+			
+	elif request.method == 'GET':
 		return render_template('login.html', form=form)
 	
 # @app.route('/register')
