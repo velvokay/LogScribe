@@ -3,16 +3,12 @@ from flask.ext.mysqldb import MySQL
 from app import app
 
 from app.models import db, User
-from app.forms import SignupForm
+from app.forms import SignupForm, SigninForm
 
 @app.route('/')
 @app.route('/index')
 def index():
     return render_template('index.html')
-	
-@app.route('/login', methods=['POST'])
-def login():
-	return render_template('login.html')
 	
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -44,7 +40,20 @@ def profile():
 		return redirect(url_for('signin'))
 	else:
 		return render_template('profile.html')
-		
+	
+@app.route('/signin', methods=['GET', 'POST'])	
+def signin():
+	form = SigninForm()
+	
+	if request.method == 'POST':
+		if form.validate() == False:
+			return render_template('login.html', form = form)
+		else:
+			session['email'] = form.email.data
+			return redirect(url_for('profile'))
+	elif request.method == ['GET']:
+		return render_template('login.html', form = form)
+	
 # @app.route('/register')
 # def register():
 	# return render_template('register.html')

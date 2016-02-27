@@ -2,17 +2,27 @@
 {% block content %}
 <body>
     <div class="container" style="text-align: center">
-        <h3>Login</h3>
-                <form action="" method="post">
-                    <input type="text" placeholder="Username" name="username" value="{{
-                        request.form.username }}">
-                    <input type="password" placeholder="Password" name="password" value="{{
-                        request.form.password }}">
-                    <input class="btn btn-default" type="submit" value="Login">
-                </form>
-            {% if error %}
-            <p class="error"><strong>Error:</strong> {{ error }}</p>
-            {% endif %}
+        <h2>Sign In</h2>
+
+        {% for message in form.email.errors %}
+        <div class="flash">{{ message }}</div>
+        {% endfor %}
+
+        {% for message in form.password.errors %}
+        <div class="flash">{{ message }}</div>
+        {% endfor %}
+
+        <form action="{{ url_for('signin') }}" method=post>
+            {{ form.hidden_tag() }}
+
+            {{ form.email.label }}
+            {{ form.email }}
+
+            {{ form.password.label }}
+            {{ form.password }}
+
+            {{ form.submit }}
+        </form>
     </div>
 </body>
 {% endblock %}
