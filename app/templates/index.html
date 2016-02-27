@@ -1,12 +1,40 @@
+<head>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+</head>
 {% extends "base.html" %}
 {% block content %}
 <body>
+    <H1>LogScr V1.1.1</H1>
     <div>
-        <H1>LogScr V1.1.1</H1>
-        <a>Debug.</a>
-        <br>
-        <h2>Get started</h2>
-        <button class="outline">Begin</button>
+        <form class="form-horizontal" method="post" action="/addTask">
+            <fieldset>
+                <legend>Create Your Task</legend>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="txtTitle">Title</label>
+                    <div class="col-md-4">
+                        <input id="txtTitle" name="inputTitle" type="text" placeholder="placeholder" class="form-control input-md">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="txtPost">Description</label>
+                    <div class="col-md-4">
+                        <textarea class="form-control" id="txtPost" name="inputDescription"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="singlebutton"></label>
+                    <div class="col-md-4">
+                        <input id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit" value="Publish" />
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
     </div>
 </body>
 {% endblock %}
