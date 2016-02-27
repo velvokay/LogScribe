@@ -3,7 +3,7 @@ from flask.ext.mysqldb import MySQL
 from app import app
 
 from app.models import db, User
-from app.forms import SignupForm, SigninForm
+from app.forms import SignupForm, SigninForm, AddTaskForm
 
 @app.route('/')
 @app.route('/index')
@@ -70,33 +70,21 @@ def signout():
 	session.pop('email', None)
 	return redirect(url_for('index'))
 
-@app.route('/addTask',methods=['POST'])
+@app.route('/addTask',methods=['GET', 'POST'])
 def addTask():
-	conn = mysql.connect()
-	cursor = conn.cursor()
-	try:
-		if session.get('email'):
-			_title = request.form['inputTitle']
-			_description = request.form['inputDescription']
-			_user = session.get('email')
-			
-			cursor.callproc('sp_addTask',(_title,_description,_user))
-			data = cursor.fetchall()
-			
-			if len(data) is 0:
-				conn.commit()
-				return redirect('/index')
-			else:
-				return render_template('error.html',error = 'An error occurred!')
-				
+	form = AddTaskForm()
+	
+	if request.method == 'POST':
+		if form.validate() == False:
+			return render_template('index.html', form=form)
 		else:
-			return render_template('error.html',error = 'Unauthorized Access')
-	except Exception as e:
-		return render_template('error.html',error = str(e))
-	finally:
-		cursor.close()
-		conn.close()
-		
+			newtask = Task(form.task_title.data, form.task_description.data)
+			db.session.add(newtask)
+			db.session.commit()
+			
+	elif request.method == 'GET':
+		return render_template('index.html', form=form)
+	
 # @app.route('/register')
 # def register():
 	# return render_template('register.html')

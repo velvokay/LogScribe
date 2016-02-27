@@ -1,6 +1,6 @@
 from flask.ext.wtf import Form
 from wtforms import TextField, TextAreaField, SubmitField, validators, ValidationError, PasswordField
-from app.models import db, User
+from app.models import db, User, Task
 
 
 class SignupForm(Form):
@@ -41,4 +41,21 @@ class SigninForm(Form):
 			return True;
 		else:
 			self.email.errors.append("Wrong e-mail or password")
-			return False;	
+			return False;
+			
+class AddTaskForm(Form):
+	task_title = TextField("Title",  [validators.Required("Please enter the title.")])
+	task_description = TextField("Description",  [validators.Required("Please enter a description.")])
+	
+	def __init__(self, *args, **kwargs):
+		Form.__init__(self, *args, **kwargs)
+	
+	def validate(self):
+		if not Form.validate(self):
+			return False
+		task = Task.query.filter_by(task_title).first()
+		if task:
+			self.task.errors.append("That title is already taken")
+			return False
+		else:
+			return True

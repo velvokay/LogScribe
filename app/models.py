@@ -22,3 +22,19 @@ class User(db.Model):
    
   def check_password(self, password):
     return check_password_hash(self.pwdhash, password)
+	
+class Task(db.Model):
+	__tablename__ = 'tbl_task'
+	task_id = db.Column(db.Integer, primary_key = True)
+	task_title = db.Column(db.String(45))
+	task_description = db.Column(db.String(5000))
+	task_user_id = db.Column(db.Integer)
+	task_date = db.Column(db.DateTime)
+	task_address = db.Column(db.String(80))
+	
+	def __init__(self, task_title, task_description, task_user_id, task_date, task_address):
+		self.task_title = task_title.title()
+		self.task_description = task_description.title()
+		self.task_id = task_id.title()
+		self.task_date = task_date.title()
+		self.task_address = task_address.lower();
