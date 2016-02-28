@@ -35,7 +35,7 @@
                     <a><strong>Created by: </strong> {{ session['email'] }}</a>
                 </div>
                 {% endif %}
-                <form method="post" action="{{ url_for('index' }}">
+                <form method="post" action="{{ url_for('index') }}">
                     <div class="col-xs-6 col-md-4">
                         <div class="form-group">
                             {{ editform.task_date.label }}
