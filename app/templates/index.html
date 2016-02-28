@@ -46,8 +46,11 @@
                         <div class="form-group">
                             {{ editform.task_address.label }}
                             {{ editform.task_address }}
-                            {{ editform.submitEdit }}
+
                         </div>
+                    </div>
+                    <div class="col-xs-6 col-md-4">
+                        {{ editform.task_isTaskCompleted }}
                     </div>
                 </form>
             </div>
@@ -56,6 +59,11 @@
                     <section>
                         <a><strong>Description: </strong>{{ session['task_description'] }}</a>
                     </section>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-md-4">
+                    {{ editform.submitEdit }}
                 </div>
             </div>
         </div>

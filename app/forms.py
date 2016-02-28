@@ -64,6 +64,7 @@ class AddTaskForm(Form):
 class EditTaskForm(Form):
 	task_date = DateField("Date:", [validators.Required("Please enter a date")])
 	task_address = TextField("Address:", [validators.Required("Please enter an address")])
+	isTaskCompleted = BooleanField("Completed:")
 	submitEdit = SubmitField("Save Changes")
 	
 	def __init__(self, *args, **kwargs):
