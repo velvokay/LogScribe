@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, json, request, session, flash, send_file
 from flask.ext.mysqldb import MySQL
-from flask.ext.sqlalchemy.sql import select
+
 from app import app
 
 from app.models import db, User, Task
@@ -22,10 +22,11 @@ def index():
 			db.session.add(newtask)
 			db.session.commit()
 			#Post commit
-			s = select([Task])
+			
+			title = Task.query.filter_by(task_title=form.task_title.data).first()
 			db.session.commit()
 			
-			session['task_title'] = newtask.task_title
+			session['task_title'] = title.task_title #newtask.task_title
 			session['task_description'] = newtask.task_description
 			
 			return redirect(url_for('index'))
