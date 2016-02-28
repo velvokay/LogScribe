@@ -10,10 +10,11 @@ from app.forms import SignupForm, SigninForm, AddTaskForm
 @app.route('/index', methods=['GET', 'POST'])
 def index():
 	form = AddTaskForm()
+	editform = EditTaskForm()
 	
 	if request.method == 'POST':
 		if form.validate() == False:
-			return render_template('index.html', form=form)
+			return render_template('index.html', form=form, editform=editform)
 		else:
 			_task_user_id = None #form.task_user_id.data
 			_task_date = "01/01/70" #form.task_date.data
@@ -30,14 +31,14 @@ def index():
 			session['task_title'] = title.task_title #newtask.task_title
 			session['task_description'] = description.task_description #newtask.task_description
 			
-			edittask = Task(form.task_title.data, form.task_description.data, form.task_date.data, form.task.address.data)
+			edittask = Task(form.task_title.data, form.task_description.data, editform.task_date.data, editform.task.address.data)
 			db.session.add(edittask)
 			db.session.commit()
 			
 			return redirect(url_for('index'))
 			
 	elif request.method == 'GET':
-		return render_template('index.html', form=form)
+		return render_template('index.html', form=form, editform=editform)
 	
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
