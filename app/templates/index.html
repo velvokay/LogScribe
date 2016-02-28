@@ -35,7 +35,18 @@
                     <a><strong>Created by: </strong> {{ session['email'] }}</a>
                 </div>
                 {% endif %}
-                <div class="col-xs-6 col-md-4"></div>
+                <div class="col-xs-6 col-md-4">
+                    <div class="form-group">
+                        {{ form.task_date.label }}
+                        {{ form.task_date }}
+                    </div>
+                </div>
+                <div class="col-xs-6 col-md-4">
+                    <div class="form-group">
+                        {{ form.task_address.label }}
+                        {{ form.task_address }}
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-xs-12 col-md-8">

@@ -24,10 +24,11 @@ def index():
 			#Post commit
 			
 			title = Task.query.filter_by(task_title=form.task_title.data).first()
+			description = Task.query.filter_by(task_description=form.task_description.data).first()
 			db.session.commit()
 			
 			session['task_title'] = title.task_title #newtask.task_title
-			session['task_description'] = newtask.task_description
+			session['task_description'] = description.task_description #newtask.task_description
 			
 			return redirect(url_for('index'))
 			

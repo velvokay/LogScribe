@@ -44,8 +44,8 @@ class SigninForm(Form):
 			return False;
 			
 class AddTaskForm(Form):
-	task_title = TextField("Title",  [validators.Required("Please enter the title.")])
-	task_description = TextField("Description",  [validators.Required("Please enter a description.")])
+	task_title = TextField("Title:",  [validators.Required("Please enter the title.")])
+	task_description = TextField("Description:",  [validators.Required("Please enter a description.")])
 	submit = SubmitField("Create Task")
 	
 	def __init__(self, *args, **kwargs):
@@ -61,3 +61,13 @@ class AddTaskForm(Form):
 		else:
 			return True
 			
+class EditTaskForm(Form):
+	task_date = DateField("Date:", [validators.Required("Please enter a date")])
+	task_address = TextField("Address:", [validators.Required("Please enter an address")])
+	
+	def __init__(self, *args, **kwargs):
+		Form.__init__(self, *args, **kwargs)
+		
+	def validate(self):
+		if not Form.validate(self):
+			return False
