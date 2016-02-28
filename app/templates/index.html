@@ -23,7 +23,7 @@
             </form>
         </section>
     </div>
-    {{% if 'task_title' in session %}}
+    {% if 'task_title' in session %}
     <div class="container-fluid">
         <div class="header">
             <h3>Task: {{ session['task_title'] }}</h3>
@@ -41,6 +41,6 @@
             </div>
         </div>
     </div>
-    {{% endif %}}
+    {% endif %}
 </body>
 {% endblock %}
