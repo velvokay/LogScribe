@@ -35,19 +35,21 @@
                     <a><strong>Created by: </strong> {{ session['email'] }}</a>
                 </div>
                 {% endif %}
-                <div class="col-xs-6 col-md-4">
-                    <div class="form-group">
-                        {{ editform.task_date.label }}
-                        {{ editform.task_date }}
+                <form method="post" action="{{ url_for('index' }}">
+                    <div class="col-xs-6 col-md-4">
+                        <div class="form-group">
+                            {{ editform.task_date.label }}
+                            {{ editform.task_date }}
+                        </div>
                     </div>
-                </div>
-                <div class="col-xs-6 col-md-4">
-                    <div class="form-group">
-                        {{ editform.task_address.label }}
-                        {{ editform.task_address }}
-                        {{ editform.submitEdit }}
+                    <div class="col-xs-6 col-md-4">
+                        <div class="form-group">
+                            {{ editform.task_address.label }}
+                            {{ editform.task_address }}
+                            {{ editform.submitEdit }}
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="row">
                 <div class="col-xs-12 col-md-8">

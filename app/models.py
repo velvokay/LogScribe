@@ -36,4 +36,4 @@ class Task(db.Model):
 		self.task_title = task_title.title()
 		self.task_description = task_description.title()
 		self.task_date = task_date.title()
-		self.task_address = task_address.title();
+		self.task_address = task_address.title()
