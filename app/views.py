@@ -20,9 +20,12 @@ def index():
 			newtask = Task(form.task_title.data, form.task_description.data, _task_date, _task_address)
 			db.session.add(newtask)
 			db.session.commit()
-			
-			session['task_title'] = db.session.query(Task.task_title) #newtask.task_title
-			session['task_description'] = db.session.query(Task.task_description) #newtask.task_description
+			#Post commit
+			con = mysql.connect()
+			cursor = con.cursor()
+			data = cursor.fetchall()
+			session['task_title'] = newtask.task_title
+			session['task_description'] = newtask.task_description
 			
 			return redirect(url_for('index'))
 			
