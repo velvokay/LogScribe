@@ -21,8 +21,8 @@ def index():
 			db.session.add(newtask)
 			db.session.commit()
 			
-			session['task_title'] = Task.query(Task.task_title) #newtask.task_title
-			session['task_description'] = Task.query(Task.task_description) #newtask.task_description
+			session['task_title'] = db.session.query(Task.task_title) #newtask.task_title
+			session['task_description'] = db.session.query(Task.task_description) #newtask.task_description
 			
 			return redirect(url_for('index'))
 			
