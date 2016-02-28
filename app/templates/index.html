@@ -18,26 +18,31 @@
                         {{ form.task_description }}
                     </div>
                     <div class="form-group">
-                        {{ form.submit }}
+                        <label class="col-md-4 control-label">{{ form.submit }}</label>
                     </div>
             </form>
         </section>
     </div>
     {% if 'task_title' in session %}
-    <div class="container-fluid">
-        <div class="header">
-            <h3>Task: {{ session['task_title'] }}</h3>
-        </div>
-        <div class="row">
-            {% if 'email' in session %}
-            <div class="col-xs-6 col-lg-4">
-                <a><strong>Created by: </strong> {{ session['email'] }}</a>
+    <div class="panel panel-default" style="background-color: white">
+        <div class="container-fluid">
+            <div class="header">
+                <h3>Task: {{ session['task_title'] }}</h3>
             </div>
-            {% endif %}
-            <div class="col-xs-6 col-lg-4">
-                <section>
-                    <a><strong>Description: </strong>{{ session['task_description'] }}</a>
-                </section>
+            <div class="row">
+                {% if 'email' in session %}
+                <div class="col-xs-6 col-md-4">
+                    <a><strong>Created by: </strong> {{ session['email'] }}</a>
+                </div>
+                {% endif %}
+                <div class="col-xs-6 col-md-4"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-8">
+                    <section>
+                        <a><strong>Description: </strong>{{ session['task_description'] }}</a>
+                    </section>
+                </div>
             </div>
         </div>
     </div>

@@ -14,7 +14,10 @@ def index():
 		if form.validate() == False:
 			return render_template('index.html', form=form)
 		else:
-			newtask = Task(form.task_title.data, form.task_description.data)
+			_task_user_id = None #form.task_user_id.data
+			_task_date = None #form.task_date.data
+			_task_address = None #form.task_address.data
+			newtask = Task(form.task_title.data, form.task_description.data, _task_user_id, _task_date, _task_address)
 			db.session.add(newtask)
 			db.session.commit()
 			
