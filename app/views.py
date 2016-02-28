@@ -31,7 +31,7 @@ def index():
 			session['task_title'] = title.task_title #newtask.task_title
 			session['task_description'] = description.task_description #newtask.task_description
 			
-			edittask = Task(form.task_title.data, form.task_description.data, editform.task_date.data, editform.task.address.data)
+			edittask = Task(form.task_title.data, form.task_description.data, editform.task_date.data, editform.task_address.data)
 			db.session.add(edittask)
 			db.session.commit()
 			
