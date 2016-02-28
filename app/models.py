@@ -35,5 +35,5 @@ class Task(db.Model):
 	def __init__(self, task_title, task_description, task_date, task_address):
 		self.task_title = task_title.title()
 		self.task_description = task_description.title()
-		self.task_date = task_date.lower()
-		self.task_address = task_address.lower();
+		self.task_date = task_date.title()
+		self.task_address = task_address.title();
