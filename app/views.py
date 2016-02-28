@@ -4,7 +4,7 @@ from flask.ext.mysqldb import MySQL
 from app import app
 
 from app.models import db, User, Task
-from app.forms import SignupForm, SigninForm, AddTaskForm
+from app.forms import SignupForm, SigninForm, AddTaskForm, EditTaskForm
 
 @app.route('/')
 @app.route('/index', methods=['GET', 'POST'])
