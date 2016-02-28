@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, json, request, session, flash, send_file
 from flask.ext.mysqldb import MySQL
-from flask.ext.sqlalchemy import select
+from flask.ext.sqlalchemy.sql import select
 from app import app
 
 from app.models import db, User, Task
