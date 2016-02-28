@@ -56,7 +56,8 @@ class AddTaskForm(Form):
 			return False
 		task = Task.query.filter_by(task_title = self.task_title.data).first()
 		if task:
-			self.task.errors.append("That title is already taken")
+			self.task_title.errors.append("That title is already taken")
 			return False
 		else:
 			return True
+			
