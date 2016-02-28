@@ -32,15 +32,15 @@ def index():
 			session['task_description'] = description.task_description #newtask.task_description
 			#edit
 			
-			edittask = Task(form.task_title.data, form.task_description.data, editform.task_date.data, editform.task_address.data)
-			db.session.add(edittask)
-			db.session.commit()
+			# edittask = Task(form.task_title.data, form.task_description.data, editform.task_date.data, editform.task_address.data)
+			# db.session.add(edittask)
+			# db.session.commit()
 			
-			title = Task.query.filter_by(task_title=form.task_title.data).first()
-			description = Task.query.filter_by(task_description=form.task_description.data).first()
-			session['task_title'] = title.task_title #newtask.task_title
-			session['task_description'] = description.task_description #newtask.task_description
-			db.session.commit()
+			# title = Task.query.filter_by(task_title=form.task_title.data).first()
+			# description = Task.query.filter_by(task_description=form.task_description.data).first()
+			# session['task_title'] = title.task_title #newtask.task_title
+			# session['task_description'] = description.task_description #newtask.task_description
+			# db.session.commit()
 			
 			return redirect(url_for('index'))
 			
