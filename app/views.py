@@ -18,6 +18,9 @@ def index():
 			db.session.add(newtask)
 			db.session.commit()
 			
+			session['task_title'] = newtask.task_title
+			session['task_description'] = newtask.task_description
+			
 			return redirect(url_for('index'))
 			
 	elif request.method == 'GET':
