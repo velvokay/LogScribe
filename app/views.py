@@ -28,8 +28,8 @@ def index():
 			description = Task.query.filter_by(task_description=form.task_description.data).first()
 			db.session.commit()
 			
-			session['task_title'] = title.task_title #newtask.task_title
-			session['task_description'] = description.task_description #newtask.task_description
+			session['task_title'] = newtask.task_title #title.task_title
+			session['task_description'] = newtask.task_description #description.task_description
 			#edit
 			
 			# edittask = Task(form.task_title.data, form.task_description.data, editform.task_date.data, editform.task_address.data)
