@@ -23,6 +23,7 @@ def index():
 			db.session.commit()
 			#Post commit
 			s = select([Task])
+			db.session.commit()
 			
 			session['task_title'] = newtask.task_title
 			session['task_description'] = newtask.task_description
