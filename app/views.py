@@ -53,7 +53,7 @@ def index():
 			#Post commit
 			
 			date = Task.query.filter_by(task_date=editform.task_date.data).first()
-			task_address = Task.query.filter_by(task_address=editform.task_address.data).first()
+			address = Task.query.filter_by(task_address=editform.task_address.data).first()
 			session['task_date'] = date.task_date
 			session['task_address'] = address.task_address
 			db.session.commit()
