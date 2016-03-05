@@ -62,7 +62,7 @@ class AddTaskForm(Form):
 			return True
 			
 class EditTaskForm(Form):
-	task_date = DateField("Date:", format='%m/%d/%Y', [validators.Optional()])
+	task_date = DateField("Date:", [validators.Optional()])
 	task_address = TextField("Address:", [validators.Optional()])
 	isTaskCompleted = BooleanField("Completed:")
 	submitEdit = SubmitField("Save Changes")
