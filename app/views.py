@@ -13,9 +13,9 @@ def index():
 	editform = EditTaskForm()
 	
 	if request.method == 'POST':
-		if form.validate() == False:
+		if form.validate() == False and editform.validate() == False:
 			return render_template('index.html', form=form, editform=editform)
-		else:
+		elif form.validate() == True and editform.validate() == False:
 			_task_user_id = None #form.task_user_id.data
 			_task_date = "01/01/70" #form.task_date.data
 			_task_address = "768 Vista Drive" #form.task_address.data
@@ -30,7 +30,9 @@ def index():
 			
 			session['task_title'] =  title.task_title #newtask.task_title
 			session['task_description'] = description.task_description #newtask.task_description
+			#=====================
 			#edit
+			#=====================
 			
 			# edittask = Task(form.task_title.data, form.task_description.data, editform.task_date.data, editform.task_address.data)
 			# db.session.add(edittask)
@@ -43,6 +45,21 @@ def index():
 			# db.session.commit()
 			
 			return redirect(url_for('index'))
+			
+		elif form.validate() == False and editform.validate() == True:
+			edittask = Task(form.task_title.data, form.task_description.data, editform.task_date.data, editform.task_address.data)
+			db.session.add(edittask)
+			db.session.commit()
+			#Post commit
+			
+			date = Task.query.filter_by(task_date=editform.task_date.data).first()
+			task_address = Task.query.filter_by(task_address=editform.task_address.data).first()
+			session['task_date'] = date.task_date
+			session['task_address'] = address.task_address
+			db.session.commit()
+			
+			return redirect(url_for('index'))
+			
 			
 	elif request.method == 'GET':
 		return render_template('index.html', form=form, editform=editform)
