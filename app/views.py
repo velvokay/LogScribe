@@ -47,6 +47,9 @@ def index():
 			return redirect(url_for('index'))
 			
 		else:
+			_task_user_id = None #form.task_user_id.data
+			_task_date = "01/01/70" #form.task_date.data
+			_task_address = "768 Vista Dr." #form.task_address.data
 			newtask = Task(form.task_title.data, form.task_description.data, _task_date, _task_address)
 			db.session.add(newtask)
 			db.session.commit()
