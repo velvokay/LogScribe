@@ -48,26 +48,27 @@
                             {{ editform.task_address }}
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-8">
+                            <section>
+                                <a><strong>Description: </strong>{{ session['task_description'] }}</a>
+                            </section>
+                        </div>
+                        <div class="col-xs-6 col-md-4">
+                            {{ editform.isTaskCompleted.label }}
+                            {{ editform.isTaskCompleted }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="header">
+                            <div class="col-xs-6 col-md-4">
+                                {{ editform.submitEdit }}
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
-            <div class="row">
-                <div class="col-xs-12 col-md-8">
-                    <section>
-                        <a><strong>Description: </strong>{{ session['task_description'] }}</a>
-                    </section>
-                </div>
-                <div class="col-xs-6 col-md-4">
-                    {{ editform.isTaskCompleted.label }}
-                    {{ editform.isTaskCompleted }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="header">
-                    <div class="col-xs-6 col-md-4">
-                        {{ editform.submitEdit }}
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
     {% endif %}
